@@ -20,11 +20,11 @@ public class PrintToUserInfo {
     }
 
     public static void printTotalBasketCost(Basket basket) {
-        System.out.println("\tbasketFacotry.Basket total cost is: " + basket.getBasketTotalCost());
+        System.out.println("\tBasket total cost is: " + basket.getBasketTotalCost());
     }
 
     public static void printBasketItems(List<Product> basketList) {
-        System.out.println("\nList of products in your basketFacotry.Basket: ");
+        System.out.println("\nList of products in your basket: ");
         for (Product product : basketList) {
             System.out.println("\t" + product.toString());
         }
