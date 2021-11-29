@@ -13,8 +13,8 @@ public class Basket {
 
     public void addProductToBasket(String productName, BigDecimal productPrice, int productQuantity) {
         if (basketList.isEmpty()) {
-            Product newProduct = new Product(productName, productPrice, productQuantity);
-            basketList.add(newProduct);
+            addNewProductToBasketList(productName, productPrice, productQuantity);
+
         } else {
             boolean exists = false;
             for (Product product : basketList) {
@@ -25,10 +25,15 @@ public class Basket {
                 }
             }
             if (!exists) {
-                Product newProduct = new Product(productName, productPrice, productQuantity);
-                basketList.add(newProduct);
+                addNewProductToBasketList(productName, productPrice, productQuantity);
             }
         }
+
+    }
+
+    private void addNewProductToBasketList(String productName, BigDecimal productPrice, int productQuantity) {
+        Product newProduct = new Product(productName, productPrice, productQuantity);
+        basketList.add(newProduct);
     }
 
     public List<Product> getBasketList() {
