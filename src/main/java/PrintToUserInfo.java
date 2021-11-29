@@ -15,6 +15,7 @@ public class PrintToUserInfo {
         System.out.println("\tBasket total cost is: "+basket.getBasketTotalCost());
     }
     public static void printBasketItems(List<Product> basketList) {
+        System.out.println("\nList of products in your Basket: ");
         for (Product product : basketList) {
             System.out.println("\t"+product.toString());
         }

@@ -1,3 +1,4 @@
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +9,7 @@ public class Basket {
         basketList = new ArrayList<>();
     }
 
-    public void addProductToBasket(String productName, int productPrice, int productQuantity) {
+    public void addProductToBasket(String productName, BigDecimal productPrice, int productQuantity) {
         if (basketList.isEmpty()) {
             Product newProduct = new Product(productName, productPrice, productQuantity);
             basketList.add(newProduct);
@@ -18,8 +19,7 @@ public class Basket {
                 if (productName.equals(product.getName())) {
                     exists = true;
                     product.setQuantity(product.getQuantity() + productQuantity);
-                    product.setTotalPrice(product.getQuantity() * product.getPrice());
-
+                    product.setTotalProductPrice( product.getPrice().multiply(BigDecimal.valueOf(product.getQuantity())));
                 }
             }
             if (!exists) {
@@ -33,10 +33,10 @@ public class Basket {
         return basketList;
     }
 
-    public  int getBasketTotalCost() {
-        int sum = 0;
+    public  BigDecimal getBasketTotalCost() {
+        BigDecimal sum = BigDecimal.valueOf(0);
         for (Product product : basketList) {
-            sum += product.getTotalPrice();
+            sum= sum.add(product.getTotalProductPrice());
         }
         return sum;
     }

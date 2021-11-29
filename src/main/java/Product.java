@@ -1,16 +1,18 @@
-
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Product {
     String name;
-    int price;
+    BigDecimal price;
     int quantity;
-    int totalPrice;
+    BigDecimal totalProductPrice;
 
-    public Product(String name, int price, int quantity) {
+    public Product(String name, BigDecimal price, int quantity) {
+        BigDecimal bigDecimal = new BigDecimal(String.valueOf(price));
         this.name = name;
-        this.price = price;
+        this.price = bigDecimal.setScale(2,RoundingMode.HALF_UP);
         this.quantity = quantity;
-        this.totalPrice= this.price*this.quantity;
+        this.totalProductPrice = this.price.multiply(BigDecimal.valueOf(quantity));
 
     }
     @Override
@@ -18,14 +20,14 @@ public class Product {
         return "Product: " + name+
                 ", Price: " + price+
                 ", Quantity: " + quantity+
-                ", Total price: "+ totalPrice;
+                ", Total price: "+ totalProductPrice;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
@@ -33,24 +35,16 @@ public class Product {
         return quantity;
     }
 
-    public int getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
+    public BigDecimal getTotalProductPrice() {
+        return totalProductPrice;
     }
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
-    public void setTotalPrice(int totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setTotalProductPrice(BigDecimal totalProductPrice) {
+        this.totalProductPrice = totalProductPrice;
     }
 }
 

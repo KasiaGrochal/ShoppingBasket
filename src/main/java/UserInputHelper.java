@@ -1,3 +1,4 @@
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class UserInputHelper {
@@ -13,9 +14,9 @@ public class UserInputHelper {
         return scanner.nextInt();
     }
 
-    public static int getProductPrice(){
+    public static BigDecimal getProductPrice(){
         PrintToUserInfo.askForProductPrice();
         Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
+        return scanner.nextBigDecimal();
     }
 }
