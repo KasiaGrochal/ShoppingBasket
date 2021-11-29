@@ -1,3 +1,5 @@
+package helpers;
+
 import java.math.BigDecimal;
 import java.util.Scanner;
 
