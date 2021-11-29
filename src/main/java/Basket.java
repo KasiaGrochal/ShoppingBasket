@@ -19,7 +19,7 @@ public class Basket {
                 if (productName.equals(product.getName())) {
                     exists = true;
                     product.setQuantity(product.getQuantity() + productQuantity);
-                    product.setTotalProductPrice( product.getPrice().multiply(BigDecimal.valueOf(product.getQuantity())));
+                    product.setTotalProductPrice(product.getPrice().multiply(BigDecimal.valueOf(product.getQuantity())));
                 }
             }
             if (!exists) {
@@ -33,10 +33,10 @@ public class Basket {
         return basketList;
     }
 
-    public  BigDecimal getBasketTotalCost() {
+    public BigDecimal getBasketTotalCost() {
         BigDecimal sum = BigDecimal.valueOf(0);
         for (Product product : basketList) {
-            sum= sum.add(product.getTotalProductPrice());
+            sum = sum.add(product.getTotalProductPrice());
         }
         return sum;
     }

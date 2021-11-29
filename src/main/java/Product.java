@@ -10,17 +10,18 @@ public class Product {
     public Product(String name, BigDecimal price, int quantity) {
         BigDecimal bigDecimal = new BigDecimal(String.valueOf(price));
         this.name = name;
-        this.price = bigDecimal.setScale(2,RoundingMode.HALF_UP);
+        this.price = bigDecimal.setScale(2, RoundingMode.HALF_UP);
         this.quantity = quantity;
         this.totalProductPrice = this.price.multiply(BigDecimal.valueOf(quantity));
 
     }
+
     @Override
-    public String toString(){
-        return "Product: " + name+
-                ", Price: " + price+
-                ", Quantity: " + quantity+
-                ", Total price: "+ totalProductPrice;
+    public String toString() {
+        return "Product: " + name +
+                ", Price: " + price +
+                ", Quantity: " + quantity +
+                ", Total price: " + totalProductPrice;
     }
 
     public String getName() {
