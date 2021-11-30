@@ -12,23 +12,18 @@ public class Basket {
     }
 
     public void addProductToBasket(String productName, BigDecimal productPrice, int productQuantity) {
-        if (basketList.isEmpty()) {
-            addNewProductToBasketList(productName, productPrice, productQuantity);
-
-        } else {
-            boolean exists = false;
-            for (Product product : basketList) {
-                if (productName.equals(product.getName())) {
-                    exists = true;
+        for (Product product : basketList) {
+                if (isProductAlreadyInTheBasket(productName, product)) {
                     product.setQuantity(product.getQuantity() + productQuantity);
                     product.setTotalProductPrice(product.getPrice().multiply(BigDecimal.valueOf(product.getQuantity())));
+                    return;
                 }
             }
-            if (!exists) {
                 addNewProductToBasketList(productName, productPrice, productQuantity);
             }
-        }
 
+    private boolean isProductAlreadyInTheBasket(String productName, Product product) {
+        return productName.equals(product.getName());
     }
 
     private void addNewProductToBasketList(String productName, BigDecimal productPrice, int productQuantity) {
